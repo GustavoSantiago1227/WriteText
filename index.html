@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>WriteCipher</title>
+</head>
+<body>
+
+    <header>
+        <div id="botes-de-edicao-de-texto">
+            <button title="Escrever conteudo"  onclick="editor.ativar(this, 'escrever')"  class="ligado">Escrever</button>
+            <button title="Adicionar um titulo ao conteudo" onclick="editor.ativar(this, 'titulo')">Titulo</button>
+            <button title="Adicionar divisão ao conteudo" onclick="editor.ativar(this, 'divisoes')">Divisao</button>
+            <button title="Adicionar observação ao conteudo" onclick="editor.ativar(this, 'observacao')">Observação</button>
+            <button title="Deletar conteudo" onclick="editor.ativar(this, 'deletar')">Apagar</button>
+    
+        </div>
+        <div id="widget">
+            <div id="tom-e-tempo">
+                <label for="">
+                    Tom:
+                    <input type="text" placeholder="Tom" list="tom-da-musica" id="tom">
+                    <datalist id="tom-da-musica">
+                        <option value="C"></option>
+                        <option value="Cm"></option>
+                        <option value="C#"></option>
+                        <option value="C#m"></option>
+                        <option value="D"></option>
+                        <option value="Dm"></option>
+                        <option value="D#"></option>
+                        <option value="D#m"></option>
+                        <option value="E"></option>
+                        <option value="Em"></option>
+                        <option value="F"></option>
+                        <option value="Fm"></option>
+                        <option value="F#"></option>
+                        <option value="F#m"></option>
+                        <option value="G"></option>
+                        <option value="Gm"></option>
+                        <option value="G#"></option>
+                        <option value="G#m"></option>
+                        <option value="A"></option>
+                        <option value="Am"></option>
+                        <option value="A#"></option>
+                        <option value="A#m"></option>
+                        <option value="B"></option>
+                        <option value="Bm"></option>
+                    </datalist>                
+                </label>
+                <label>
+                    Tempo:
+                    <input type="text" placeholder="Tempo" list="tempo-da-musica" id="tempo">
+                    <datalist id="tempo-da-musica">
+                        <option value="4/4"></option>
+                        <option value="3/4"></option>
+                        <option value="2/4"></option>
+                        <option value="6/8"></option>
+                        <option value="12/8"></option>
+                        <option value="5/4"></option>
+                        <option value="7/8"></option>
+                        <option value="9/8"></option>
+                    </datalist>                
+                </label>
+                <button title="Colocar o Widget do tempo e musica na cifra" onclick="editor.ativar(this, 'tom-e-tempo')">Aplicar</button>
+                <button title="Remover o Widget do tempo e musica na cifra" onclick="editor.tom_e_tempo.remover()">Remover</button>
+            </div>
+        </div>
+
+       <div id="widgets">
+            <div id="tempo-em-acordes">
+                <label>
+                    Tempo de acorde:
+                    <input type="text" placeholder="2/4" id="tempo-de-acorde" list="exemplo-de-tempos">
+                    <datalist id="exemplo-de-tempos">
+                        <option value="1/4"></option>
+                        <option value="2/6"></option>
+                        <option value="3/6"></option>
+                        <option value="8/4"></option>
+                        <option value="4/4"></option>
+                        <option value="3/4"></option>
+                        <option value="2/4"></option>
+                    </datalist>
+                    <button title="Colocar/Remover o Widget do tempo de acorde na cifra" onclick="editor.ativar(this, 'tempo-de-acorde')">Aplicar</button>
+                </label>
+            </div>
+
+            
+            <div id="instrumentos">
+                <label>
+                    Instrumentos:
+                    <input type="text" placeholder="Banda" id="instrumento" list="instrumentos-disponiveis">
+                    <datalist id="instrumentos-disponiveis">
+                        <option value="Baixo"></option>
+                        <option value="Banda"></option>
+                        <option value="Bateria"></option>
+                        <option value="Guitarra"></option>
+                        <option value="Piano"></option>
+                        <option value="Strings"></option>
+                        <option value="Violao"></option>
+                        
+                    </datalist>
+                    <button title="Colocar/Remover o Widget de instrumento na cifra" onclick="editor.ativar(this, 'instrumentos')">Aplicar</button>
+                </label>
+            </div>
+       </div>
+
+   </div>
+        
+    </header>
+
+    <div id="elementos-em-memoria">
+    </div>
+    
+    <div id="conteudo" contenteditable="true" 
+    onblur="editor.adicionar_marcadores()" onmousemove="editor.movimentacao_de_mouse(event)" 
+    onclick="editor.mouse_esquerdo_clicado(event)" oncontextmenu="editor.mouse_direito_clicado(event)" ondblclick="editor.duplo_clique(event)">
+    </div>
+    <canvas>
+        eleamenfe
+    </canvas>
+
+    <footer>WriteCipher©</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
